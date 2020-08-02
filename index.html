@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+    <script>
+        let API_ENDPOINT = "https://d8hwx3vq75.execute-api.ap-south-1.amazonaws.com/FirstStage"
+
+        function getInWords(){
+            let number=document.getElementById('number');
+            console.log(number);
+            let inputData = {
+                "num": '4556'
+            };
+            $.ajax({
+                url: API_ENDPOINT,
+                type: 'POST',
+                data:  JSON.stringify(inputData)  ,
+                contentType: 'application/json; charset=utf-8',
+                success: function (response) {
+                    // document.getElementById("inWords").textContent="Post ID: " + response;
+                    console.log(response.text())
+                },
+                error: function () {
+                    alert("error");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <input type="text" id="number">
+    <button id="GetInWords" onclick="getInWords()">GetInWords</button>
+</body>
+</html>
